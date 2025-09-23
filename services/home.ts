@@ -10,7 +10,7 @@ export const homeApi = createApi({
     baseUrl,
   }),
   endpoints: (builder) => ({
-    getCategories: builder.query<PlantCategory[], void>({
+    getCategories: builder.query<{ data: PlantCategory[] }, void>({
       query: () => `getCategories`,
     }),
     getQuestions: builder.query<Question[], void>({
