@@ -37,24 +37,26 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
+    fontFamily: 'Rubik_400Regular', // 👈 varsayılan Rubik regular
   },
   defaultSemiBold: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: '600',
+    fontFamily: 'Rubik_500Medium', // 👈 semi-bold Rubik
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
     lineHeight: 32,
+    fontFamily: 'Rubik_700Bold', // 👈 başlık için bold
   },
   subtitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'Rubik_500Medium',
   },
   link: {
     lineHeight: 30,
     fontSize: 16,
+    fontFamily: 'Rubik_400Regular',
     color: '#0a7ea4',
   },
 });

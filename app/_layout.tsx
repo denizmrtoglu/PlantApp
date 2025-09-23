@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useFontLoader } from '@/hooks/use-font-loader';
 
 export const unstable_settings = {
   anchor: '(tabs)',
@@ -11,6 +12,10 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+
+  const fontsLoaded = useFontLoader();
+
+  if (!fontsLoaded) return null;
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
