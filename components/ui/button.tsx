@@ -1,3 +1,4 @@
+import { ThemedText } from "@/components/ui/themed-text";
 import {
   Pressable,
   PressableProps,
@@ -5,7 +6,6 @@ import {
   StyleSheet,
   ViewStyle,
 } from "react-native";
-import { ThemedText } from "../themed-text";
 
 interface ButtonProps extends PressableProps {
   label: string;

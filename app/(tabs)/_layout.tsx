@@ -8,7 +8,7 @@ import {
   ProfileIcon,
   ScanIcon,
 } from "@/assets/icons";
-import { HapticTab } from "@/components/haptic-tab";
+import { HapticTab } from "@/components/ui/haptic-tab";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { LinearGradient } from "expo-linear-gradient";

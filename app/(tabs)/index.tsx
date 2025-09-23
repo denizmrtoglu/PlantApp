@@ -6,6 +6,7 @@ import { QuestionList } from "@/components/home/question-list";
 import { QuestionListSkeleton } from "@/components/home/question-list-skeleton";
 import { SearchHeader } from "@/components/home/search-header";
 import { GetPremiumCard } from "@/components/shared/get-premium-card";
+import { ThemedView } from "@/components/ui/themed-view";
 import { matchQuery } from "@/lib/match-query";
 import { useGetCategoriesQuery, useGetQuestionsQuery } from "@/services/home";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -17,10 +18,14 @@ export default function HomeScreen() {
   const questionsQuery = useGetQuestionsQuery();
 
   return (
-    <View style={{ ...styles.container, marginTop: statusbarHeight }}>
+    <ThemedView
+      darkColor="#101E17"
+      lightColor="#FBFAFA"
+      style={{ ...styles.container, marginTop: statusbarHeight }}
+    >
       <SearchHeader />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ padding: 24 }}>
+        <View style={styles.cardWrapper}>
           <GetPremiumCard />
         </View>
         {matchQuery(questionsQuery, {
@@ -34,15 +39,15 @@ export default function HomeScreen() {
           success: ({ data }) => <CategoryList categories={data} />,
         })}
       </ScrollView>
-    </View>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FBFAFA",
   },
+  cardWrapper: { padding: 24 },
   button: {
     height: 32,
     backgroundColor: "#28AF6E",
