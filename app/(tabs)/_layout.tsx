@@ -11,6 +11,7 @@ import {
 import { HapticTab } from "@/components/haptic-tab";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View } from "react-native";
 
 export default function TabLayout() {
@@ -53,8 +54,17 @@ export default function TabLayout() {
             display: "none",
           },
           tabBarIcon: () => (
-            <View style={styles.scanIcon}>
-              <ScanIcon size={25} color={"white"} />
+            <View style={styles.scanIconContainer}>
+              <LinearGradient
+                style={styles.scanIcon}
+                colors={["#28AF6E", "#2CCC80"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                locations={[0.1667, 1]}
+              >
+                <ScanIcon size={25} color={"white"} />
+              </LinearGradient>
+              <View style={styles.innerShadow} />
             </View>
           ),
         }}
@@ -85,15 +95,36 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  scanIcon: {
+  scanIconContainer: {
     width: 64,
     height: 64,
+    borderRadius: 32,
+    marginBottom: 22,
+    position: "relative",
+  },
+  scanIcon: {
+    width: "100%",
+    height: "100%",
     borderRadius: 32,
     alignItems: "center",
     justifyContent: "center",
     borderColor: "#2CCC80",
     borderWidth: 4,
-    marginBottom: 22,
-    backgroundColor: Colors.light.tint,
+  },
+  innerShadow: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 32,
+    backgroundColor: "rgba(0, 0, 0, 0.01)",
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.01,
+    shadowRadius: 4,
   },
 });

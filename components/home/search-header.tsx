@@ -22,8 +22,13 @@ export const SearchHeader = () => {
         />
       </>
       <View style={styles.titleContainer}>
-        <ThemedText>Hi, plant lover!</ThemedText>
-        <ThemedText type="title">{`${text} ${emoji}`}</ThemedText>
+        <ThemedText style={{ letterSpacing: 0.07 }}>
+          Hi, plant lover!
+        </ThemedText>
+        <ThemedText
+          style={{ letterSpacing: 0.35 }}
+          type="title"
+        >{`${text} ${emoji}`}</ThemedText>
       </View>
       <View style={{ paddingVertical: 14 }}>
         <SearchInput placeholder="Search for plants" />
