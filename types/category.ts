@@ -1,4 +1,4 @@
-interface PlantImage {
+interface CategoryImage {
   id: number;
   name: string;
   alternativeText: string | null;
@@ -18,7 +18,7 @@ interface PlantImage {
   updatedAt: string;
 }
 
-export interface PlantCategory {
+export interface Category {
   id: number;
   name: string;
   createdAt: string;
@@ -26,5 +26,5 @@ export interface PlantCategory {
   publishedAt: string;
   title: string;
   rank: number;
-  image: PlantImage;
+  image: CategoryImage;
 }

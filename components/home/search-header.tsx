@@ -1,26 +1,23 @@
 import { getTimeBasedGreeting } from "@/lib/utils";
 import { Image } from "expo-image";
 import { StyleSheet, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedText } from "../themed-text";
 import { SearchInput } from "../ui/search-input";
 
 export const SearchHeader = () => {
-  const statusbarHeight = useSafeAreaInsets().top;
   const { text, emoji } = getTimeBasedGreeting();
 
   return (
-    <View style={{ ...styles.container, paddingTop: statusbarHeight }}>
-      <>
-        <Image
-          source={require("@/assets/images/left-leaf.png")}
-          style={styles.leftLeaf}
-        />
-        <Image
-          source={require("@/assets/images/right-leaf.png")}
-          style={styles.rightLeaf}
-        />
-      </>
+    <View style={styles.container}>
+      <Image
+        source={require("@/assets/images/left-leaf.png")}
+        style={styles.leftLeaf}
+      />
+      <Image
+        source={require("@/assets/images/right-leaf.png")}
+        style={styles.rightLeaf}
+      />
+
       <View style={styles.titleContainer}>
         <ThemedText style={{ letterSpacing: 0.07 }}>
           Hi, plant lover!
