@@ -1,13 +1,17 @@
 import { ChevronRightIcon, PremiumEnvelopeIcon } from "@/assets/icons";
 import GradientText from "@/components/ui/gradient-text";
+import { router } from "expo-router";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const badgeCount = 1;
 
 export const GetPremiumCard = () => {
+  const handlePress = () => {
+    router.push("/paywall");
+  };
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <View style={styles.iconContainer}>
         <PremiumEnvelopeIcon />
         {badgeCount > 0 && (
@@ -39,7 +43,7 @@ export const GetPremiumCard = () => {
       </View>
 
       <ChevronRightIcon />
-    </View>
+    </Pressable>
   );
 };
 

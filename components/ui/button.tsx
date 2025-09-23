@@ -36,8 +36,8 @@ export const Button = ({
 
 const styles = StyleSheet.create({
   button: {
-    height: 32,
-    borderRadius: 12,
+    height: 52,
+    borderRadius: 14,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 16,
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     borderColor: "#28AF6E",
   },
   label: {
-    fontSize: 14,
-    fontWeight: "600",
+    fontSize: 16,
+    fontFamily: "Rubik_500Medium",
     color: "#FFFFFF",
   },
 });
