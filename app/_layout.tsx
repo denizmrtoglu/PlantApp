@@ -34,6 +34,10 @@ export default function RootLayout() {
               headerShown: false,
             }}
           />
+          <Stack.Screen
+            name="paywall"
+            options={{ presentation: "fullScreenModal", headerShown: false }}
+          />
         </Stack>
         <StatusBar style="auto" />
       </ThemeProvider>
