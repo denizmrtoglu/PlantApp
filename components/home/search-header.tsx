@@ -1,14 +1,15 @@
+import { SearchInput } from "@/components/ui/search-input";
+import { ThemedText } from "@/components/ui/themed-text";
+import { ThemedView } from "@/components/ui/themed-view";
 import { getTimeBasedGreeting } from "@/lib/utils";
 import { Image } from "expo-image";
 import { StyleSheet, View } from "react-native";
-import { ThemedText } from "../themed-text";
-import { SearchInput } from "../ui/search-input";
 
 export const SearchHeader = () => {
   const { text, emoji } = getTimeBasedGreeting();
 
   return (
-    <View style={styles.container}>
+    <ThemedView lightColor="#F6F6F6" darkColor="#000" style={styles.container}>
       <Image
         source={require("@/assets/images/left-leaf.png")}
         style={styles.leftLeaf}
@@ -30,14 +31,13 @@ export const SearchHeader = () => {
       <View style={{ paddingVertical: 14 }}>
         <SearchInput placeholder="Search for plants" />
       </View>
-    </View>
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 24,
-    backgroundColor: "#F6F6F6",
   },
   titleContainer: {
     gap: 6,

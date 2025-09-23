@@ -1,27 +1,38 @@
+import { ThemedText } from "@/components/ui/themed-text";
 import type { Question } from "@/types/question";
 import { BlurView } from "expo-blur";
 import { Image } from "expo-image";
-import { StyleSheet, View } from "react-native";
-import { ThemedText } from "../themed-text";
+import { router } from "expo-router";
+import { Pressable, StyleSheet } from "react-native";
 
 interface QuestionItemProps {
   item: Question;
 }
 
 export const QuestionItem = ({ item }: QuestionItemProps) => {
+  const { uri, image_uri, title } = item;
+
+  const handlePress = () => {
+    if (!uri) return;
+    router.push({
+      pathname: "/modal",
+      params: { url: uri },
+    });
+  };
+
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={handlePress}>
       <Image
-        source={{ uri: item.image_uri }}
+        source={{ uri: image_uri }}
         style={styles.image}
         contentFit="cover"
       />
       <BlurView style={styles.titleContainer} intensity={50}>
         <ThemedText style={styles.title} numberOfLines={2}>
-          {item.title}
+          {title}
         </ThemedText>
       </BlurView>
-    </View>
+    </Pressable>
   );
 };
 

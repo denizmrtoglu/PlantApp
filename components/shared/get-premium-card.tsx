@@ -1,7 +1,7 @@
 import { ChevronRightIcon, PremiumEnvelopeIcon } from "@/assets/icons";
+import GradientText from "@/components/ui/gradient-text";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import GradientText from "../ui/gradient-text";
 
 const badgeCount = 1;
 
@@ -17,9 +17,9 @@ export const GetPremiumCard = () => {
         )}
       </View>
 
-      <View style={{ flex: 1 }}>
+      <View style={styles.card}>
         <GradientText
-          style={{ fontSize: 16, fontWeight: "700", letterSpacing: -0.32 }}
+          style={styles.title}
           colors={["#E5C990", "#E4B046"]}
           start={{ x: 0.4935, y: 0 }}
           end={{ x: 1.3092, y: 0.91 }}
@@ -28,7 +28,7 @@ export const GetPremiumCard = () => {
           FREE Premium Available
         </GradientText>
         <GradientText
-          style={{ fontSize: 13, fontWeight: "400" }}
+          style={styles.subtitle}
           colors={["#F5C25B", "#FFDE9C"]}
           start={{ x: 0.4924, y: 2.69 }}
           end={{ x: 1.1217, y: 0 }}
@@ -73,4 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
+  card: { flex: 1 },
+  title: { fontSize: 16, fontWeight: "700", letterSpacing: -0.32 },
+  subtitle: { fontSize: 13, fontWeight: "400" },
 });

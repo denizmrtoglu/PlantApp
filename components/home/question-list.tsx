@@ -1,7 +1,7 @@
+import MemoizedHorizontalList from "@/components/ui/horizontal-list";
+import { ThemedText } from "@/components/ui/themed-text";
 import type { Question } from "@/types/question";
 import { StyleSheet, View } from "react-native";
-import { ThemedText } from "../themed-text";
-import MemoizedHorizontalList from "../ui/horizontal-list";
 import { QuestionItem } from "./question-item";
 
 interface QuestionListProps {
@@ -17,7 +17,7 @@ export const QuestionList = ({ questions }: QuestionListProps) => {
         renderItem={({ item }) => <QuestionItem item={item} />}
         spacing={10}
         keyExtractor={(item) => item.id.toString()}
-        containerStyle={{ alignSelf: "center" }}
+        containerStyle={styles.containerStyle}
       />
     </View>
   );
@@ -25,4 +25,5 @@ export const QuestionList = ({ questions }: QuestionListProps) => {
 
 const styles = StyleSheet.create({
   container: { gap: 16, paddingHorizontal: 24 },
+  containerStyle: { alignSelf: "center" },
 });

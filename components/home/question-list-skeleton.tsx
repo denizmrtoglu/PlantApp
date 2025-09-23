@@ -1,5 +1,5 @@
+import { ThemedText } from "@/components/ui/themed-text";
 import { StyleSheet, View } from "react-native";
-import { ThemedText } from "../themed-text";
 
 export const QuestionListSkeleton = () => {
   return (
