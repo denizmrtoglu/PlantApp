@@ -1,4 +1,4 @@
-import { PaywallSubscriptionList } from "@/lib/constants";
+import { PaywallSubscriptionList } from "@/constants/paywall";
 import { SubscriptionItem } from "@/types/paywall";
 import { LinearGradient } from "expo-linear-gradient";
 import { useCallback, useState } from "react";

@@ -2,10 +2,10 @@ import { ScrollView, StyleSheet, View } from "react-native";
 
 import { CategoryList } from "@/components/home/category-list";
 import { CategoryListSkeleton } from "@/components/home/category-list-skeleton";
+import { GetPremiumCard } from "@/components/home/get-premium-card";
 import { QuestionList } from "@/components/home/question-list";
 import { QuestionListSkeleton } from "@/components/home/question-list-skeleton";
 import { SearchHeader } from "@/components/home/search-header";
-import { GetPremiumCard } from "@/components/shared/get-premium-card";
 import { ThemedView } from "@/components/ui/themed-view";
 import { matchQuery } from "@/lib/match-query";
 import { useGetCategoriesQuery, useGetQuestionsQuery } from "@/services/home";
