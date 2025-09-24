@@ -7,40 +7,51 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+import {
+  OnboardingProvider,
+  useOnboarding,
+} from "@/context/onboarding-context";
 import { useColorScheme } from "@/hooks/use-color-scheme";
-import { useFontLoader } from "@/hooks/use-font-loader";
 import ReduxProvider from "@/providers/redux-provider";
-
-export const unstable_settings = {
-  anchor: "(tabs)",
-};
+import { SplashScreenController } from "@/providers/splash-controller";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
-  const fontsLoaded = useFontLoader();
-
-  if (!fontsLoaded) return null;
-
   return (
     <ReduxProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="modal"
-            options={{
-              presentation: "modal",
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="paywall"
-            options={{ presentation: "fullScreenModal", headerShown: false }}
-          />
-        </Stack>
-        <StatusBar style="auto" />
+        <OnboardingProvider>
+          <SplashScreenController />
+          <RootNavigator />
+          <StatusBar style="auto" />
+        </OnboardingProvider>
       </ThemeProvider>
     </ReduxProvider>
+  );
+}
+
+function RootNavigator() {
+  const { onboarded } = useOnboarding();
+
+  if (onboarded === undefined) return null;
+
+  return (
+    <Stack>
+      <Stack.Protected guard={!!onboarded}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack.Protected>
+      <Stack.Protected guard={!onboarded}>
+        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+      </Stack.Protected>
+      <Stack.Screen
+        name="paywall"
+        options={{ presentation: "fullScreenModal", headerShown: false }}
+      />
+      <Stack.Screen
+        name="modal"
+        options={{ presentation: "modal", headerShown: false }}
+      />
+    </Stack>
   );
 }

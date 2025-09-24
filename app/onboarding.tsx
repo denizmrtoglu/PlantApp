@@ -1,8 +1,10 @@
 import { Carousel } from "@/components/shared/carousel";
 import { ThemedText } from "@/components/ui/themed-text";
+import { setHasSeenOnboarding } from "@/lib/storage";
+import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 
-export default function PaywallScreen() {
+export default function OnboardingScreen() {
   return (
     <View style={styles.container}>
       <Carousel
@@ -39,7 +41,10 @@ export default function PaywallScreen() {
             image: require("@/assets/images/onboarding-3.png"),
           },
         ]}
-        onFinish={() => {}}
+        onFinish={async () => {
+          await setHasSeenOnboarding();
+          router.push("/paywall");
+        }}
         startText="Get Started"
         buttonText="Continue"
       />
