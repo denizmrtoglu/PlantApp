@@ -11,6 +11,6 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install packages
-        run: npx expo install
+        run: npm install
       - name: Run Typescript Checks
         run: npm run lint

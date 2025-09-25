@@ -15,6 +15,6 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        run: npx expo install
+        run: npm install
       - name: Run unit tests
-        run: npm run test
+        run: npm run test:ci
