@@ -1,4 +1,4 @@
-import { PlantCategory } from "@/types/category";
+import { Category } from "@/types/category";
 import { Question } from "@/types/question";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -10,8 +10,9 @@ export const homeApi = createApi({
     baseUrl,
   }),
   endpoints: (builder) => ({
-    getCategories: builder.query<{ data: PlantCategory[] }, void>({
+    getCategories: builder.query<Category[], void>({
       query: () => `getCategories`,
+      transformResponse: (response: { data: Category[] }) => response.data,
     }),
     getQuestions: builder.query<Question[], void>({
       query: () => `getQuestions`,

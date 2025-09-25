@@ -10,7 +10,7 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { ThemedText } from "../ui/themed-text";
 
 const { width } = Dimensions.get("window");
@@ -35,8 +35,6 @@ export const Carousel: FC<CarouselProps> = ({
   startText,
   buttonText,
 }) => {
-  const statusBarHeight = useSafeAreaInsets().top;
-
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
@@ -53,55 +51,60 @@ export const Carousel: FC<CarouselProps> = ({
   };
 
   return (
-    <View style={styles.container}>
-      <View style={{ paddingTop: statusBarHeight }}>
-        <FlatList
-          ref={flatListRef}
-          data={carouselItems}
-          renderItem={({ item }) => (
-            <ThemedView style={[styles.itemContainer, { width: width }]}>
-              <ThemedView
-                style={{
-                  alignItems: "flex-start",
-                  width: "100%",
-                  paddingLeft: 24,
-                  paddingRight: 51,
-                  gap: 8,
-                }}
-              >
-                {item.title}
-                <ThemedText>{item.description}</ThemedText>
-              </ThemedView>
-              <Image
-                source={item.image}
-                style={{ width: width, height: width * (530 / 375) }}
-                contentFit="contain"
-              />
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        ref={flatListRef}
+        data={carouselItems}
+        renderItem={({ item }) => (
+          <ThemedView style={[styles.itemContainer, { width: width }]}>
+            <ThemedView style={styles.titleContainer}>
+              {item.title}
+              <ThemedText>{item.description}</ThemedText>
             </ThemedView>
-          )}
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          onMomentumScrollEnd={(event) => {
-            const index = Math.round(
-              event.nativeEvent.contentOffset.x /
-                event.nativeEvent.layoutMeasurement.width
-            );
-            setActiveIndex(index);
-          }}
-          scrollEventThrottle={16}
+            <Image
+              source={item.image}
+              style={[
+                styles.carouselImage,
+                { width: width, height: width * (530 / 375) },
+              ]}
+              contentFit="contain"
+            />
+          </ThemedView>
+        )}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        onMomentumScrollEnd={(event) => {
+          const index = Math.round(
+            event.nativeEvent.contentOffset.x /
+              event.nativeEvent.layoutMeasurement.width
+          );
+          setActiveIndex(index);
+        }}
+        scrollEventThrottle={16}
+      />
+
+      <View style={styles.buttonContainer}>
+        <Button
+          label={isFirstItem ? startText : buttonText}
+          style={styles.button}
+          onPress={isLastItem ? onFinish : handleNext}
         />
 
-        <View style={{ paddingHorizontal: 24 }}>
-          <Button
-            label={isFirstItem ? startText : buttonText}
-            style={styles.button}
-            onPress={isLastItem ? onFinish : handleNext}
-          />
-        </View>
+        {isFirstItem && (
+          <ThemedText
+            type="default"
+            lightColor="#597165B2"
+            darkColor="#597165B2"
+            style={styles.termsText}
+          >
+            By tapping next, you are agreeing to PlantID Terms of Use & Privacy
+            Policy.
+          </ThemedText>
+        )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -114,8 +117,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  list: {},
+  titleContainer: {
+    alignItems: "flex-start",
+    width: "100%",
+    paddingLeft: 24,
+    paddingRight: 51,
+    gap: 8,
+  },
+  buttonContainer: {
+    paddingHorizontal: 24,
+    height: 110,
+  },
   button: {
     borderRadius: 12,
+  },
+  termsText: {
+    textAlign: "center",
+    fontSize: 11,
+    paddingHorizontal: 47,
+    marginTop: 17,
+  },
+  carouselImage: {
+    resizeMode: "contain",
   },
 });

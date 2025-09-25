@@ -3,7 +3,7 @@ import { FeatureItem } from "@/components/paywall/feature-item";
 import { SubscriptionToggle } from "@/components/paywall/subscription-toggle";
 import { Button } from "@/components/ui/button";
 import MemoizedHorizontalList from "@/components/ui/horizontal-list";
-import { PaywallFeatureList } from "@/constants/paywall";
+import { PAYWALL_FEATURES } from "@/constants/paywall";
 import { useOnboarding } from "@/context/onboarding-context";
 import { setHasSeenOnboarding } from "@/lib/storage";
 import { Image } from "expo-image";
@@ -34,7 +34,7 @@ export default function PaywallScreen() {
       </View>
 
       <MemoizedHorizontalList
-        data={PaywallFeatureList}
+        data={PAYWALL_FEATURES}
         renderItem={({ item }) => <FeatureItem item={item} />}
         spacing={8}
         keyExtractor={(item) => item.title}
