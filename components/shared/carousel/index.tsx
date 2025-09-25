@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { ThemedText } from "@/components/ui/themed-text";
-import { CarouselItem as CarouselItemType } from "@/types/onboarding";
 import type { FC } from "react";
 import React, { useRef, useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, ImageSourcePropType, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CarouselDots } from "./carousel-dots";
 import { CarouselItem } from "./carousel-item";
+
+export interface CarouselItemType {
+  id: string;
+  title: React.ReactNode;
+  description?: string;
+  image: ImageSourcePropType;
+}
 
 interface CarouselProps {
   carouselItems: CarouselItemType[];

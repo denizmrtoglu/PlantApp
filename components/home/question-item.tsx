@@ -15,8 +15,8 @@ export const QuestionItem = ({ item }: QuestionItemProps) => {
   const handlePress = () => {
     if (!uri) return;
     router.push({
-      pathname: "/modal",
-      params: { url: uri },
+      pathname: "/blog-modal",
+      params: { uri },
     });
   };
 

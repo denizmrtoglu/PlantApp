@@ -47,7 +47,7 @@ function RootNavigator() {
         options={{ presentation: "fullScreenModal", headerShown: false }}
       />
       <Stack.Screen
-        name="modal"
+        name="blog-modal"
         options={{ presentation: "modal", headerShown: false }}
       />
     </Stack>

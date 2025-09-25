@@ -1,6 +1,6 @@
+import { CarouselItemType } from "@/components/shared/carousel/";
 import { BrushText } from "@/components/ui/brush-text";
 import { ThemedText } from "@/components/ui/themed-text";
-import { CarouselItem } from "@/types/onboarding";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const ONBOARDING_ITEMS: CarouselItem[] = [
+export const ONBOARDING_CAROUSEL_ITEMS: CarouselItemType[] = [
   {
     id: "1",
     title: (
