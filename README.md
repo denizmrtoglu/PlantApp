@@ -1,50 +1,138 @@
-# Welcome to your Expo app 👋
+# 🌿 PlantApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern plant care and diagnosis application built with Expo and React Native.
 
-## Get started
+## 📱 Features
 
-1. Install dependencies
+- Plant disease diagnosis
+- Personal garden management
+- Plant scanning capabilities
+- Premium features with subscription
+- Responsive and beautiful UI with Mantine
+- Cross-platform support (iOS, Android, Web)
 
+## 🛠 Tech Stack
+
+- [Expo](https://expo.dev) - React Native framework
+- [Next.js](https://nextjs.org) (Pages Router) - Web framework
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Redux Toolkit](https://redux-toolkit.js.org/) - State management
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) - Data fetching
+- [Mantine](https://mantine.dev/) - UI components
+- [React Hook Form](https://react-hook-form.com/) - Form handling
+- [Zod](https://zod.dev/) - Schema validation
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or newer)
+- npm or yarn
+- [Expo Go](https://expo.dev/client) app installed on your mobile device
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone [repository-url]
+   cd PlantApp
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
+### Running the App
+
+#### Development
+
+1. Start the development server:
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+2. Running with Expo Go:
+   - Scan the QR code with your mobile device
+   - For iOS: Use the Camera app
+   - For Android: Use the Expo Go app
+   - Or press 'a' for Android emulator or 'i' for iOS simulator
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+#### Web
 
 ```bash
-npm run reset-project
+npm run web
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📱 Running with Expo Go
 
-## Learn more
+1. Make sure you have the Expo Go app installed on your device:
 
-To learn more about developing your project with Expo, look at the following resources:
+   - [iOS App Store](https://apps.apple.com/app/apple-store/id982107779)
+   - [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Start the development server:
 
-## Join the community
+   ```bash
+   npx expo start
+   ```
 
-Join our community of developers creating universal apps.
+3. Scan the QR code:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   - iOS: Use the Camera app
+   - Android: Use the Expo Go app's QR scanner
+
+4. The app will automatically load on your device through Expo Go
+
+Note: Some features might have limitations in Expo Go due to native dependencies.
+
+## 🏗 Project Structure
+
+```
+PlantApp/
+├── app/                   # Application screens and navigation
+├── assets/               # Static assets (images, icons)
+├── components/           # Reusable components
+├── constants/            # App constants and theme
+├── context/             # React Context providers
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+├── providers/           # App providers (Redux, etc.)
+├── services/            # API services
+├── store/               # Redux store configuration
+└── types/               # TypeScript type definitions
+```
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Add your environment variables here
+API_URL=your_api_url
+```
+
+Note: Never commit the `.env` file to version control.
+
+## 📝 Development Guidelines
+
+- Follow the TypeScript best practices
+- Use functional components with hooks
+- Implement proper error handling
+- Write clean, maintainable code
+- Follow the established project structure
+- Use appropriate naming conventions
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
