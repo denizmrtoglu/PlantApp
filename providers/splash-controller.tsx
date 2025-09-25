@@ -28,6 +28,7 @@ SplashScreen.preventAutoHideAsync().catch(() => {
 export function SplashScreenController() {
   const { setOnboarded, onboarded } = useOnboarding();
   const [isAppPrepared, setIsAppPrepared] = useState(false);
+  const [hasSplashBeenHidden, setHasSplashBeenHidden] = useState(false);
 
   const [loaded] = useFonts({
     Rubik_300Light,
@@ -61,14 +62,25 @@ export function SplashScreenController() {
     prepare();
   }, [setOnboarded]);
 
-  // Only hide splash screen when both fonts are loaded and onboarding is checked
+  // Only hide splash screen once when initial loading is complete
   useEffect(() => {
-    if (loaded && isAppPrepared && onboarded !== undefined) {
-      SplashScreen.hideAsync().catch((error) => {
-        console.error("Error hiding splash screen:", error);
-      });
+    if (
+      loaded &&
+      isAppPrepared &&
+      onboarded !== undefined &&
+      !hasSplashBeenHidden
+    ) {
+      SplashScreen.hideAsync()
+        .then(() => {
+          setHasSplashBeenHidden(true);
+        })
+        .catch((error) => {
+          console.error("Error hiding splash screen:", error);
+          // Even if there's an error, we mark it as hidden to prevent further attempts
+          setHasSplashBeenHidden(true);
+        });
     }
-  }, [loaded, isAppPrepared, onboarded]);
+  }, [loaded, isAppPrepared, onboarded, hasSplashBeenHidden]);
 
   return null;
 }
