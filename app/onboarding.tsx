@@ -1,4 +1,4 @@
-import { Carousel } from "@/components/shared/carousel";
+import { Carousel } from "@/components/shared/carousel/";
 import { ONBOARDING_ITEMS } from "@/constants/onboarding";
 import { setHasSeenOnboarding } from "@/lib/storage";
 import { router } from "expo-router";

@@ -14,9 +14,8 @@ export const setHasSeenOnboarding = async () => {
 
 export const getHasSeenOnboarding = async () => {
   try {
-    return false;
-    // const value = await AsyncStorage.getItem(STORAGE_KEYS.HAS_SEEN_ONBOARDING);
-    // return value === "true";
+    const value = await AsyncStorage.getItem(STORAGE_KEYS.HAS_SEEN_ONBOARDING);
+    return value === "true";
   } catch (error) {
     console.error("Error getting onboarding status:", error);
     return false;

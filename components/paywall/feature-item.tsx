@@ -14,7 +14,7 @@ export const FeatureItem = ({ item }: FeatureItemProps) => {
       <View style={styles.icon}>
         <Icon name={icon} />
       </View>
-      <View style={{ zIndex: 1, gap: 4 }}>
+      <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
@@ -33,16 +33,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     padding: 16,
   },
-  featureItemBlur: {
-    width: 156,
-    height: 130,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
   icon: { zIndex: 1, marginBottom: 16 },
+  titleContainer: { zIndex: 1, gap: 4 },
   title: {
     zIndex: 1,
     fontSize: 16,
@@ -54,6 +46,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: "Rubik_300Light",
     color: "#FFFFFF",
+  },
+  featureItemBlur: {
+    width: 156,
+    height: 130,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 
