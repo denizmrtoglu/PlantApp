@@ -1,5 +1,5 @@
 import { Carousel } from "@/components/shared/carousel/";
-import { ONBOARDING_ITEMS } from "@/constants/onboarding";
+import { ONBOARDING_CAROUSEL_ITEMS } from "@/constants/onboarding";
 import { setHasSeenOnboarding } from "@/lib/storage";
 import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
@@ -8,7 +8,7 @@ export default function OnboardingScreen() {
   return (
     <View style={styles.container}>
       <Carousel
-        carouselItems={ONBOARDING_ITEMS}
+        carouselItems={ONBOARDING_CAROUSEL_ITEMS}
         onFinish={async () => {
           await setHasSeenOnboarding();
           router.push("/paywall");

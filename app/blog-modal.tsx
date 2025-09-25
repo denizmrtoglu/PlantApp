@@ -3,16 +3,12 @@ import { useLocalSearchParams } from "expo-router";
 import { StyleSheet } from "react-native";
 import WebView from "react-native-webview";
 
-export default function ModalScreen() {
-  const { url } = useLocalSearchParams();
-
-  if (!url) {
-    return null;
-  }
+export default function BlogModalScreen() {
+  const { uri } = useLocalSearchParams<{ uri: string }>();
 
   return (
     <ThemedView style={styles.container}>
-      <WebView source={{ uri: url as string }} style={styles.webview} />
+      <WebView source={{ uri }} style={styles.webview} />
     </ThemedView>
   );
 }
