@@ -10,10 +10,10 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ThemedText } from "../ui/themed-text";
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 interface CarouselItem {
   id: string;
@@ -35,6 +35,9 @@ export const Carousel: FC<CarouselProps> = ({
   startText,
   buttonText,
 }) => {
+  const statusbarHeight = useSafeAreaInsets().top;
+  const bottombarHeight = useSafeAreaInsets().bottom;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
@@ -51,23 +54,22 @@ export const Carousel: FC<CarouselProps> = ({
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         ref={flatListRef}
         data={carouselItems}
         renderItem={({ item }) => (
           <ThemedView style={[styles.itemContainer, { width: width }]}>
-            <ThemedView style={styles.titleContainer}>
+            <View
+              style={[styles.titleContainer, { marginTop: statusbarHeight }]}
+            >
               {item.title}
               <ThemedText>{item.description}</ThemedText>
-            </ThemedView>
+            </View>
             <Image
               source={item.image}
-              style={[
-                styles.carouselImage,
-                { width: width, height: width * (530 / 375) },
-              ]}
-              contentFit="contain"
+              style={{ width: width, height: height, position: "absolute" }}
+              contentFit="cover"
             />
           </ThemedView>
         )}
@@ -85,7 +87,7 @@ export const Carousel: FC<CarouselProps> = ({
         scrollEventThrottle={16}
       />
 
-      <View style={styles.buttonContainer}>
+      <View style={[styles.buttonContainer, { marginBottom: bottombarHeight }]}>
         <Button
           label={isFirstItem ? startText : buttonText}
           style={styles.button}
@@ -103,8 +105,37 @@ export const Carousel: FC<CarouselProps> = ({
             Policy.
           </ThemedText>
         )}
+
+        {!isFirstItem && (
+          <CarouselDots
+            carouselItems={carouselItems}
+            activeIndex={activeIndex}
+          />
+        )}
       </View>
-    </SafeAreaView>
+    </View>
+  );
+};
+
+const CarouselDots = ({
+  carouselItems,
+  activeIndex,
+}: {
+  carouselItems: CarouselItem[];
+  activeIndex: number;
+}) => {
+  return (
+    <View style={styles.dotContainer}>
+      {carouselItems.map((item, index) => (
+        <View
+          key={item.id}
+          style={[
+            styles.dot,
+            activeIndex - 1 === index ? styles.dotActive : styles.dotInactive,
+          ]}
+        />
+      ))}
+    </View>
   );
 };
 
@@ -115,7 +146,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
   titleContainer: {
     alignItems: "flex-start",
@@ -123,6 +154,7 @@ const styles = StyleSheet.create({
     paddingLeft: 24,
     paddingRight: 51,
     gap: 8,
+    zIndex: 1,
   },
   buttonContainer: {
     paddingHorizontal: 24,
@@ -137,7 +169,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 47,
     marginTop: 17,
   },
-  carouselImage: {
-    resizeMode: "contain",
+  dotContainer: {
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+  dot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+  },
+  dotActive: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "#13231B",
+  },
+  dotInactive: {
+    backgroundColor: "#13231B40",
   },
 });

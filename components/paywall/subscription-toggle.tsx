@@ -47,11 +47,11 @@ export function SubscriptionToggle() {
         )}
         {isSelected && (
           <LinearGradient
-            colors={["#28AF6E3D", "#28af6e00"]}
+            colors={["rgba(40, 175, 110, 0.17)", "rgba(40, 175, 110, 0)"]}
             style={styles.gradient}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 1, y: 0 }}
-            locations={[1, 0.5]}
+            start={{ x: 1, y: 0.5 }}
+            end={{ x: 0, y: 0.5 }}
+            locations={[0, 0.6851]}
           />
         )}
       </Pressable>
