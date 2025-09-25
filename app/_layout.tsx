@@ -1,8 +1,4 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
@@ -11,16 +7,18 @@ import {
   OnboardingProvider,
   useOnboarding,
 } from "@/context/onboarding-context";
-import { useColorScheme } from "@/hooks/use-color-scheme";
 import ReduxProvider from "@/providers/redux-provider";
 import { SplashScreenController } from "@/providers/splash-controller";
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  // If you want to use dark mode, uncomment the following lines
+  //const colorScheme = useColorScheme();
+  //const theme = colorScheme === "dark" ? DarkTheme : DefaultTheme;
+  const theme = DefaultTheme;
 
   return (
     <ReduxProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <ThemeProvider value={theme}>
         <OnboardingProvider>
           <SplashScreenController />
           <RootNavigator />

@@ -64,7 +64,7 @@ export const Carousel: FC<CarouselProps> = ({
               style={[styles.titleContainer, { marginTop: statusbarHeight }]}
             >
               {item.title}
-              <ThemedText>{item.description}</ThemedText>
+              <ThemedText darkColor="#13231B">{item.description}</ThemedText>
             </View>
             <Image
               source={item.image}
@@ -155,10 +155,16 @@ const styles = StyleSheet.create({
     paddingRight: 51,
     gap: 8,
     zIndex: 1,
+    paddingTop: 12,
   },
   buttonContainer: {
     paddingHorizontal: 24,
     height: 110,
+    backgroundColor: "transparent",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   button: {
     borderRadius: 12,

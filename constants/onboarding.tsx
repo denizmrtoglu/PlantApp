@@ -7,19 +7,19 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
   },
-  titleWithSpacing: {
-    fontSize: 28,
-    letterSpacing: -1,
-  },
 });
 
 export const ONBOARDING_ITEMS: CarouselItem[] = [
   {
     id: "1",
     title: (
-      <ThemedText style={styles.title}>
+      <ThemedText style={styles.title} darkColor="#13231B">
         Welcome to{" "}
-        <ThemedText type="defaultSemiBold" style={styles.title}>
+        <ThemedText
+          type="defaultSemiBold"
+          style={styles.title}
+          darkColor="#13231B"
+        >
           PlantApp
         </ThemedText>
       </ThemedText>
@@ -30,7 +30,7 @@ export const ONBOARDING_ITEMS: CarouselItem[] = [
   {
     id: "2",
     title: (
-      <ThemedText style={styles.title}>
+      <ThemedText style={styles.title} darkColor="#13231B">
         Take a photo to{" "}
         <BrushText
           text="identify"
@@ -46,7 +46,7 @@ export const ONBOARDING_ITEMS: CarouselItem[] = [
   {
     id: "3",
     title: (
-      <ThemedText style={styles.titleWithSpacing}>
+      <ThemedText style={styles.title} darkColor="#13231B">
         Get plant{" "}
         <BrushText
           text="care guides"

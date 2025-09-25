@@ -10,12 +10,13 @@ import {
 } from "@/assets/icons";
 import { HapticTab } from "@/components/ui/haptic-tab";
 import { Colors } from "@/constants/theme";
-import { useColorScheme } from "@/hooks/use-color-scheme";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View } from "react-native";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  // If you want to use dark mode, uncomment the following line
+  //const colorScheme = useColorScheme();
+  const colorScheme = "light";
 
   return (
     <Tabs
