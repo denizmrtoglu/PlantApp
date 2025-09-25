@@ -1,29 +1,15 @@
 import { Button } from "@/components/ui/button";
-import { ThemedView } from "@/components/ui/themed-view";
-import { Image } from "expo-image";
+import { ThemedText } from "@/components/ui/themed-text";
+import { CarouselItem as CarouselItemType } from "@/types/onboarding";
 import type { FC } from "react";
 import React, { useRef, useState } from "react";
-import {
-  Dimensions,
-  FlatList,
-  ImageSourcePropType,
-  StyleSheet,
-  View,
-} from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ThemedText } from "../ui/themed-text";
-
-const { width, height } = Dimensions.get("window");
-
-interface CarouselItem {
-  id: string;
-  title: React.ReactNode;
-  description?: string;
-  image: ImageSourcePropType;
-}
+import { CarouselDots } from "./carousel-dots";
+import { CarouselItem } from "./carousel-item";
 
 interface CarouselProps {
-  carouselItems: CarouselItem[];
+  carouselItems: CarouselItemType[];
   onFinish: () => void;
   startText: string;
   buttonText: string;
@@ -35,7 +21,6 @@ export const Carousel: FC<CarouselProps> = ({
   startText,
   buttonText,
 }) => {
-  const statusbarHeight = useSafeAreaInsets().top;
   const bottombarHeight = useSafeAreaInsets().bottom;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -58,21 +43,7 @@ export const Carousel: FC<CarouselProps> = ({
       <FlatList
         ref={flatListRef}
         data={carouselItems}
-        renderItem={({ item }) => (
-          <ThemedView style={[styles.itemContainer, { width: width }]}>
-            <View
-              style={[styles.titleContainer, { marginTop: statusbarHeight }]}
-            >
-              {item.title}
-              <ThemedText darkColor="#13231B">{item.description}</ThemedText>
-            </View>
-            <Image
-              source={item.image}
-              style={{ width: width, height: height, position: "absolute" }}
-              contentFit="cover"
-            />
-          </ThemedView>
-        )}
+        renderItem={({ item }) => <CarouselItem item={item} />}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
@@ -95,12 +66,7 @@ export const Carousel: FC<CarouselProps> = ({
         />
 
         {isFirstItem && (
-          <ThemedText
-            type="default"
-            lightColor="#597165B2"
-            darkColor="#597165B2"
-            style={styles.termsText}
-          >
+          <ThemedText type="default" style={styles.termsText}>
             By tapping next, you are agreeing to PlantID Terms of Use & Privacy
             Policy.
           </ThemedText>
@@ -113,28 +79,6 @@ export const Carousel: FC<CarouselProps> = ({
           />
         )}
       </View>
-    </View>
-  );
-};
-
-const CarouselDots = ({
-  carouselItems,
-  activeIndex,
-}: {
-  carouselItems: CarouselItem[];
-  activeIndex: number;
-}) => {
-  return (
-    <View style={styles.dotContainer}>
-      {carouselItems.map((item, index) => (
-        <View
-          key={item.id}
-          style={[
-            styles.dot,
-            activeIndex - 1 === index ? styles.dotActive : styles.dotInactive,
-          ]}
-        />
-      ))}
     </View>
   );
 };
@@ -174,26 +118,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     paddingHorizontal: 47,
     marginTop: 17,
-  },
-  dotContainer: {
-    flexDirection: "row",
-    gap: 8,
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
-  dot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-  },
-  dotActive: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: "#13231B",
-  },
-  dotInactive: {
-    backgroundColor: "#13231B40",
+    color: "#597165B2",
   },
 });

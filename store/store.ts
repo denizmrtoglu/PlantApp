@@ -26,7 +26,7 @@ export const makeStore = () => {
       getDefaultMiddleware({
         serializableCheck: false,
       }).concat(MIDDLEWARES),
-    devTools: true, //TODO: Change to false in production
+    devTools: true,
   });
 };
 
