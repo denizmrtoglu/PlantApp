@@ -36,7 +36,7 @@ export default function HomeScreen() {
         {matchQuery(categoriesQuery, {
           loading: () => <CategoryListSkeleton />,
           error: () => <></>,
-          success: ({ data }) => <CategoryList categories={data} />,
+          success: (data) => <CategoryList categories={data} />,
         })}
       </ScrollView>
     </ThemedView>

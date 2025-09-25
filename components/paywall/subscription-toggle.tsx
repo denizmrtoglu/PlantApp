@@ -1,4 +1,4 @@
-import { PaywallSubscriptionList } from "@/constants/paywall";
+import { PAYWALL_SUBSCRIPTIONS } from "@/constants/paywall";
 import { SubscriptionItem } from "@/types/paywall";
 import { LinearGradient } from "expo-linear-gradient";
 import { useCallback, useState } from "react";
@@ -60,7 +60,7 @@ export function SubscriptionToggle() {
 
   return (
     <View style={styles.container}>
-      {PaywallSubscriptionList.map((item) => renderItem(item))}
+      {PAYWALL_SUBSCRIPTIONS.map((item) => renderItem(item))}
     </View>
   );
 }

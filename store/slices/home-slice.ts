@@ -1,8 +1,16 @@
 import { homeApi } from "@/services/home";
+import { Category } from "@/types/category";
+import { Question } from "@/types/question";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  categories: [] as any[],
+interface HomeState {
+  categories: Category[];
+  questions: Question[];
+}
+
+const initialState: HomeState = {
+  categories: [],
+  questions: [],
 };
 
 export const HomeSlice = createSlice({
@@ -16,10 +24,17 @@ export const HomeSlice = createSlice({
         state.categories = payload;
       }
     );
+    builder.addMatcher(
+      homeApi.endpoints.getQuestions.matchFulfilled,
+      (state, { payload }) => {
+        state.questions = payload;
+      }
+    );
   },
   selectors: {
     getCategories: (state) => state.categories,
+    getQuestions: (state) => state.questions,
   },
 });
 
-export const { getCategories } = HomeSlice.selectors;
+export const { getCategories, getQuestions } = HomeSlice.selectors;
