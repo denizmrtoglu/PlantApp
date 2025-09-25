@@ -1,0 +1,16 @@
+name: pull_request_lint
+on: [pull_request]
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install packages
+        run: npx expo install
+      - name: Run Typescript Checks
+        run: npm run lint

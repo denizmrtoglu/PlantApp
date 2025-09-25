@@ -1,6 +1,6 @@
+import { CarouselItemType } from "@/components/shared/carousel/";
 import { ThemedText } from "@/components/ui/themed-text";
 import { ThemedView } from "@/components/ui/themed-view";
-import { CarouselItem as CarouselItemType } from "@/types/onboarding";
 import { Image } from "expo-image";
 import type { FC } from "react";
 import React from "react";

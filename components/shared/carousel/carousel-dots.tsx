@@ -1,4 +1,4 @@
-import { CarouselItem } from "@/types/onboarding";
+import { CarouselItemType } from "@/components/shared/carousel/";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -6,7 +6,7 @@ export const CarouselDots = ({
   carouselItems,
   activeIndex,
 }: {
-  carouselItems: CarouselItem[];
+  carouselItems: CarouselItemType[];
   activeIndex: number;
 }) => {
   return (
