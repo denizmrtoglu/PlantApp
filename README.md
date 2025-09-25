@@ -1,26 +1,23 @@
 # 🌿 PlantApp
 
-A modern plant care and diagnosis application built with Expo and React Native.
+A React Native case study implementing a plant app onboarding flow and premium features showcase.
 
 ## 📱 Features
 
-- Plant disease diagnosis
-- Personal garden management
-- Plant scanning capabilities
-- Premium features with subscription
-- Responsive and beautiful UI with Mantine
-- Cross-platform support (iOS, Android, Web)
+- Onboarding screens with smooth animations
+- Home screen with categories and questions
+- Premium features paywall implementation
+- Tab-based navigation (Home, Scan, Diagnose, Garden, Profile)
+- Cross-platform support (iOS, Android)
+- Offline data persistence with AsyncStorage
 
 ## 🛠 Tech Stack
 
-- [Expo](https://expo.dev) - React Native framework
-- [Next.js](https://nextjs.org) (Pages Router) - Web framework
+- [Expo](https://expo.dev) - React Native framework with Expo Router
+- [React Native](https://reactnative.dev/) - Mobile app framework
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [Redux Toolkit](https://redux-toolkit.js.org/) - State management
-- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) - Data fetching
-- [Mantine](https://mantine.dev/) - UI components
-- [React Hook Form](https://react-hook-form.com/) - Form handling
-- [Zod](https://zod.dev/) - Schema validation
+- [Jest](https://jestjs.io/) & [@testing-library/react-native](https://callstack.github.io/react-native-testing-library/) - Testing
 
 ## 🚀 Getting Started
 
@@ -66,7 +63,30 @@ A modern plant care and diagnosis application built with Expo and React Native.
 npm run web
 ```
 
+#### Testing
+
+Run the tests in watch mode:
+
+```bash
+npm test
+```
+
 ## 📱 Running with Expo Go
+
+### Quick Start with QR Code
+
+Scan this QR code with your device to open the app directly in Expo Go:
+
+![Expo Go QR Code](eas-launch.svg)
+
+- iOS: Use the Camera app
+- Android: Use the Expo Go app's QR scanner
+
+The app will automatically load on your device through Expo Go.
+
+### Manual Setup
+
+If you need to run the app locally:
 
 1. Make sure you have the Expo Go app installed on your device:
 
@@ -79,12 +99,7 @@ npm run web
    npx expo start
    ```
 
-3. Scan the QR code:
-
-   - iOS: Use the Camera app
-   - Android: Use the Expo Go app's QR scanner
-
-4. The app will automatically load on your device through Expo Go
+3. Scan the QR code that appears in your terminal
 
 Note: Some features might have limitations in Expo Go due to native dependencies.
 
@@ -111,7 +126,7 @@ Create a `.env` file in the root directory:
 
 ```env
 # Add your environment variables here
-API_URL=your_api_url
+EXPO_PUBLIC_API_URL=your_api_url
 ```
 
 Note: Never commit the `.env` file to version control.
