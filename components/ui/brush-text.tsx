@@ -1,4 +1,5 @@
 import { ThemedText } from "@/components/ui/themed-text";
+import { isAndroid } from "@/lib/utils";
 import { Image } from "expo-image";
 import { StyleSheet, View } from "react-native";
 
@@ -17,7 +18,11 @@ export const BrushText = ({
 }: BrushTextProps) => {
   return (
     <View style={styles.container}>
-      <ThemedText type="defaultSemiBold" style={styles.text}>
+      <ThemedText
+        type="defaultSemiBold"
+        style={[styles.text, { marginBottom: isAndroid ? -14 : -8 }]}
+        darkColor="#13231B"
+      >
         {text}
       </ThemedText>
       <Image

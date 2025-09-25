@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 type GreetingResult = {
   text: string;
   emoji: string;
@@ -28,3 +30,5 @@ export const getTimeBasedGreeting = (): GreetingResult => {
     };
   }
 };
+
+export const isAndroid = Platform.OS === "android";

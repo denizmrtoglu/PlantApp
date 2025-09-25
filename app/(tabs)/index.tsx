@@ -48,17 +48,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardWrapper: { padding: 24 },
-  button: {
-    height: 32,
-    backgroundColor: "#28AF6E",
-    alignItems: "center",
-  },
-  emptyContainer: {
-    height: 164,
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    gap: 8,
-    backgroundColor: "red",
-  },
 });
