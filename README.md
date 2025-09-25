@@ -2,6 +2,113 @@
 
 A React Native case study implementing a plant app onboarding flow and premium features showcase.
 
+> 📘 **Note**: Please review the technical decisions and implementation details by expanding the section below. This case study documentation contains important information about the project's architecture and design choices.
+
+<details>
+<summary>📋 Case Study Details</summary>
+
+## Project Overview
+
+PlantApp is a mobile application built with React Native and Expo, designed to help users manage and diagnose their plants. The app features onboarding flows, plant diagnostics, garden management, and premium features.
+
+## Technical Decisions & Implementation Details
+
+### State Management Strategy
+
+The project implements a hybrid state management approach, utilizing both Context API and Redux Toolkit for different purposes:
+
+#### Context API
+
+- Used for managing onboarding state through `OnboardingContext`
+- Chosen for its simplicity and effectiveness in handling app-wide onboarding status
+- Implementation includes a custom hook `useOnboarding` for better encapsulation and type safety
+- Onboarding state persisted in AsyncStorage for maintaining user progress across sessions
+
+#### Redux Toolkit & RTK Query
+
+- Redux infrastructure is set up but intentionally kept minimal
+- Prepared for future scalability without immediate implementation
+- Includes a `HomeSlice` that can be activated when needed
+- This approach allows for easy integration of complex state management when the application grows
+
+### UI Implementation
+
+- Custom UI components built from scratch without external UI libraries
+- Decision made due to the relatively small scale of the case study
+- Results in slightly verbose styling code but provides complete control over the UI
+- Components are modular and reusable across the application
+
+### Theming and Dark Mode
+
+- Dark mode support is built into the application architecture
+- Currently disabled via code comments for the case study
+- Can be easily enabled by uncommenting relevant sections
+- Demonstrates consideration for future theme requirements
+
+### Font Usage
+
+- Standardized on Rubik font family throughout the application
+- Made conscious decision to ignore isolated instances of different fonts in the design
+- Maintains consistency in typography across the app
+
+### Design Decisions and Optimizations
+
+#### Design System Adjustments
+
+- Standardized inconsistent spacing values (e.g., 1.32px margins) to follow industry best practices
+- Implemented multiples of 2px for spacing and layout
+- These adjustments improve maintainability and visual consistency
+
+#### Notable Improvements
+
+1. Spacing Standardization
+
+   - Converted irregular spacing values to standard increments
+   - Improved visual rhythm and maintainability
+
+2. Typography Consistency
+
+   - Standardized font usage to Rubik
+   - Eliminated one-off font variations for better maintainability
+
+3. Component Architecture
+   - Organized components by feature and shared functionality
+   - Maintained clear separation of concerns
+
+### Data Persistence
+
+- Utilized AsyncStorage for maintaining user preferences and onboarding state
+- Implemented proper type safety and error handling for storage operations
+
+## Areas for Future Enhancement
+
+1. UI Library Integration
+
+   - Consider adding a UI library if component complexity increases
+   - Would reduce styling verbosity and standardize component behavior
+
+2. Redux Implementation
+
+   - Activate prepared Redux infrastructure when needed
+   - Already set up for seamless integration of complex state management
+
+3. Theme Toggle
+   - Enable dark mode implementation
+   - Add user controls for theme switching
+
+## Development Practices
+
+- Implemented TypeScript for type safety
+- Followed modular component architecture
+- Maintained consistent coding style and patterns
+- Used custom hooks for reusable logic
+
+## Conclusion
+
+The implementation successfully balances immediate requirements with future scalability. While some design inconsistencies were present in the original specifications, the final implementation makes thoughtful adjustments to improve the overall user experience and code maintainability.
+
+</details>
+
 ## 📱 Features
 
 - Onboarding screens with smooth animations
